@@ -21,7 +21,7 @@ const database = getDatabase(app);
 provider.setCustomParameters({
   prompt: "select_account",
 });
-export async function login() {
+export async function logIn() {
   signInWithPopup(auth, provider);
 }
 export async function logOut() {
@@ -30,7 +30,6 @@ export async function logOut() {
 export function onUserStateChange(callback) {
   onAuthStateChanged(auth, async (user) => {
     const updateUser = user ? await adminUser(user) : null;
-    console.debug(updateUser);
     callback(updateUser);
   });
 }
